@@ -1,0 +1,3 @@
+<launch>
+    <node pkg="rosmondemo" exec="monitor_verdict_visualiser" name="visualiser" output="screen"/>
+</launch>

@@ -10,12 +10,18 @@ class MonitorVerdictVisualiser(Node):
         super().__init__('monitor_verdict_visualiser')
         self.visualiser = tl.TrafficLights(monname)
 
-        self.subscription = self.create_subscription(String,topicname,self.visualiser.changeColor,10)
+        self.get_logger().info('Creating subscription for '+topicname)
+        self.subscription = self.create_subscription(String,topicname,self.callback_test,10)
+        self.subscription
+        # self.get_logger().info(self.subscription)
 
+    def callback_test(self,data):
+        self.get_logger().info("in callback")
+        self.get_logger().info(data)
 def main(args=None):
     rclpy.init(args=args)
 
-    visualiser = MonitorVerdictVisualiser("panda_arm_movement","/arm_prop_monitor/monitor_verdict")
+    visualiser = MonitorVerdictVisualiser("panda_arm_movement","/joint_pos_monitor/monitor_verdict")
 
     rclpy.spin(visualiser)
 

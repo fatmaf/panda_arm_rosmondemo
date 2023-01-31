@@ -22,11 +22,12 @@ class TrafficLights:
         self.oval_green = self.canvas.create_oval(10, 230, 110, 330, fill="white")
 
         # self.color.set('R')
-        self.canvas.itemconfig(self.oval_red, fill="red")
+        self.canvas.itemconfig(self.oval_yellow, fill="yellow")
 
         window.mainloop()
 
     def monitorCallback(self,data):
+        print(data)
         colors = {"true":'G',"unknown":'Y',"false":'R'}
         truestr = "true"
         falsestr = "false"
